@@ -3,7 +3,6 @@ export class Item {
     name: string;
     raid: string;
     boss: string;
-    ilvl: Number;
     url: string;
 
     constructor(item: Item) {
@@ -11,7 +10,6 @@ export class Item {
         this.name = item.name;
         this.raid = item.raid;
         this.boss = item.boss;
-        this.ilvl = item.ilvl;
         this.url = item.url;
     }
 }

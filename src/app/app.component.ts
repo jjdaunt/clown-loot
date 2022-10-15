@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Item } from '../models/item';
 import { Raider } from '../models/raider';
 
@@ -24,6 +25,8 @@ export class AppComponent implements OnInit {
     "Ruby Sanctum H10", "Ruby Sanctum H25",
   ];
   currentRaid: string = "";
+
+  lootControl = new FormControl('');
 
   ngOnInit(): void {
     fetch('../assets/items.json').then(res => {

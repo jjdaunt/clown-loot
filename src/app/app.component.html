@@ -17,7 +17,16 @@ Raid Select: <select [(ngModel)]="currentRaid"><option *ngFor="let raid of raids
       <td>{{raider.targets[0]}}</td>
       <td>{{raider.targets[1]}}</td>
       <td>{{raider.targets[2]}}</td>
-      <td>Loot Goes Here</td>
+      <td>
+        <form>
+          <mat-form-field appearance="fill">
+            <input type="text" matInput [formControl]="lootControl" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let item of items | raidFilter: currentRaid" [value]="item">{{item.name}}</mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+      </td>
       <td><button (click)="removeRaider(i)">Remove</button></td>
     </tr>
   </tbody>
@@ -26,5 +35,5 @@ Raid Select: <select [(ngModel)]="currentRaid"><option *ngFor="let raid of raids
 <button (click)="addRaider()">Add Raider</button>
 
 <div *ngFor="let item of items | raidFilter: currentRaid">
-  {{item.id}} / {{item.name}} / {{item.raid}} / {{item.boss}} / {{item.ilvl}} // <a href="{{item.url}}">{{item.url}}</a>
+  {{item.id}} / {{item.name}} / {{item.raid}} / {{item.boss}} / <a href="{{item.url}}">{{item.url}}</a>
 </div>
