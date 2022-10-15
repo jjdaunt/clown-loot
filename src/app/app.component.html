@@ -1,0 +1,30 @@
+
+Raid Select: <select [(ngModel)]="currentRaid"><option *ngFor="let raid of raids">{{raid}}</option></select>
+<table>
+  <thead>
+    <tr>
+      <th>Character Name</th>
+      <th>Target 1</th>
+      <th>Target 2</th>
+      <th>Target 3</th>
+      <th>Loot</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let raider of raiders; index as i">
+      <td><input [(ngModel)]="raider.name"></td>
+      <td>{{raider.targets[0]}}</td>
+      <td>{{raider.targets[1]}}</td>
+      <td>{{raider.targets[2]}}</td>
+      <td>Loot Goes Here</td>
+      <td><button (click)="removeRaider(i)">Remove</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<button (click)="addRaider()">Add Raider</button>
+
+<div *ngFor="let item of items | raidFilter: currentRaid">
+  {{item.id}} / {{item.name}} / {{item.raid}} / {{item.boss}} / {{item.ilvl}} // <a href="{{item.url}}">{{item.url}}</a>
+</div>
